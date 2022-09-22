@@ -18,5 +18,21 @@
     "tellUsAboutYourself": "Tell us about yourself",
     "@tellUsAboutYourself": {
       "description": "The text for 'Tell us about yourself'"
+    },
+    "whatsYourName": "What's your name?",
+    "@whatsYourName": {
+      "description": "The title for EditNameView"
+    },
+    "firstName": "First Name",
+    "@firstName": {
+      "description": "The text for 'First Name'"
+    },
+    "lastName": "Last Name",
+    "@lastName": {
+      "description": "The text for 'Last Name'"
+    },
+    "update": "Update",
+    "@update": {
+      "description": "The text for 'Update'"
     }
 }
