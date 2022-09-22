@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
 import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 import 'package:approachable_geek_challenge/src/ui/edit_profile/widgets/widgets.dart';
 
@@ -16,9 +17,9 @@ class EditProfileView extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
-                const Text(
-                  'Edit Profile',
-                  style: TextStyle(
+                Text(
+                  context.loc.editProfile,
+                  style: const TextStyle(
                     color: GeekColors.kPrimaryAccentColor,
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
@@ -27,7 +28,7 @@ class EditProfileView extends StatelessWidget {
                 const SizedBox(height: 12),
                 const ProfilePhotoCircle(),
                 ProfileInfoTile(
-                  label: "Name",
+                  label: context.loc.name,
                   description: "Micah Smith",
                   onTap: () {
                     Navigator.of(context).push(
@@ -40,7 +41,7 @@ class EditProfileView extends StatelessWidget {
                   },
                 ),
                 ProfileInfoTile(
-                  label: "Phone",
+                  label: context.loc.phone,
                   description: "(208)206-5039",
                   onTap: () {
                     Navigator.of(context).push(
@@ -53,7 +54,7 @@ class EditProfileView extends StatelessWidget {
                   },
                 ),
                 ProfileInfoTile(
-                  label: "Email",
+                  label: context.loc.email,
                   description: "micahsmith@gmail.com",
                   onTap: () {
                     Navigator.of(context).push(
@@ -66,7 +67,7 @@ class EditProfileView extends StatelessWidget {
                   },
                 ),
                 ProfileInfoTile(
-                  label: "Tell us about yourself",
+                  label: context.loc.tellUsAboutYourself,
                   description:
                       "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City. I make this drive all the time and have plenty",
                   onTap: () {

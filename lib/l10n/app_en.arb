@@ -1,0 +1,22 @@
+{
+    "editProfile": "Edit Profile!",
+    "@editProfile": {
+      "description": "The text for 'Edit Profile'"
+    },
+    "name": "Name",
+    "@name": {
+      "description": "The text for 'Name'"
+    },
+    "phone": "Phone",
+    "@phone": {
+      "description": "The text for 'Phone'"
+    },
+    "email": "Email",
+    "@email": {
+      "description": "The text for 'Email'"
+    },
+    "tellUsAboutYourself": "Tell us about yourself",
+    "@tellUsAboutYourself": {
+      "description": "The text for 'Tell us about yourself'"
+    }
+}
