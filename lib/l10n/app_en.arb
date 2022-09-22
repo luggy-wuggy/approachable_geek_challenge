@@ -34,5 +34,29 @@
     "update": "Update",
     "@update": {
       "description": "The text for 'Update'"
+    },
+    "whatsYouPhoneNumber": "What's your phone number?",
+    "@whatsYouPhoneNumber": {
+      "description": "The title for EditPhoneView"
+    },
+    "yourPhoneNumber": "Your phone number",
+    "@yourPhoneNumber": {
+      "description": "The text for 'Your phone number'"
+    },
+    "whatsYourEmail": "What's your email?",
+    "@whatsYourEmail": {
+      "description": "The title for EditEmailView"
+    },
+    "yourEmailAddress": "Your email address",
+    "@yourEmailAddress": {
+      "description": "The text for 'Your email address'"
+    },
+    "whatTypeOfPassenger": "What type of passenger are you?",
+    "@whatTypeOfPassenger": {
+      "description": "The title for EditBioView"
+    },
+    "bioTextFieldDescription": "Write a little bit about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.",
+    "@bioTextFieldDescription": {
+      "description": "The desciption hint text for bio textfield"
     }
 }

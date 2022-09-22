@@ -46,9 +46,11 @@ class EditNameView extends StatelessWidget {
               const SizedBox(height: 24),
               Row(
                 children: [
-                  GeeksInputTextField(label: context.loc.firstName),
+                  Expanded(
+                      child: GeeksInputTextField(label: context.loc.firstName)),
                   const SizedBox(width: 12),
-                  GeeksInputTextField(label: context.loc.lastName)
+                  Expanded(
+                      child: GeeksInputTextField(label: context.loc.lastName))
                 ],
               ),
               const Spacer(flex: 3),
