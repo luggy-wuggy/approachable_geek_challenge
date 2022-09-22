@@ -1,5 +1,5 @@
 {
-    "editProfile": "Edit Profile!",
+    "editProfile": "Edit Profile",
     "@editProfile": {
       "description": "The text for 'Edit Profile'"
     },
