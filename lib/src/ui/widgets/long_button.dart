@@ -19,6 +19,7 @@ class GeeksLongButton extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
         backgroundColor: Colors.black,
         fixedSize: const Size(340, 60),
+        elevation: 15,
       ),
       child: Text(
         context.loc.update,
