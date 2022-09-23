@@ -1,3 +1,4 @@
+import 'package:approachable_geek_challenge/src/common/constants/text_formatter.dart';
 import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,6 +8,7 @@ import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
 import 'package:approachable_geek_challenge/src/ui/edit_profile/widgets/input_text_field.dart';
 import 'package:approachable_geek_challenge/src/ui/widgets/long_button.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class EditPhoneView extends ConsumerStatefulWidget {
   const EditPhoneView({super.key});
@@ -23,13 +25,17 @@ class EditPhoneView extends ConsumerStatefulWidget {
 }
 
 class EditPhoneViewState extends ConsumerState<EditPhoneView> {
-  late TextEditingController phoneTextController;
+  late final TextEditingController phoneTextController;
+  late final MaskTextInputFormatter maskFormatter;
 
   @override
   void initState() {
-    phoneTextController = TextEditingController(
-      text: ref.read(accountInfoProvider).phoneNumber.toString(),
-    );
+    maskFormatter = GeeksTextFormatter.phoneNumberTextFormatter;
+
+    final String initialText = maskFormatter
+        .maskText(ref.read(accountInfoProvider).phoneNumber.toString());
+
+    phoneTextController = TextEditingController(text: initialText);
     super.initState();
   }
 
@@ -73,15 +79,21 @@ class EditPhoneViewState extends ConsumerState<EditPhoneView> {
                 label: context.loc.yourPhoneNumber,
                 textEditingController: phoneTextController,
                 textInputType: TextInputType.phone,
+                textInputFormatters: [maskFormatter],
               ),
               const Spacer(flex: 3),
               GeeksLongButton(
                 key: EditPhoneView.editPhoneLongButton,
                 label: context.loc.update,
                 onPressed: () {
-                  ref.read(accountInfoProvider.notifier).updatePhoneNumber(
-                        int.parse(phoneTextController.text),
-                      );
+                  if (phoneTextController.text.isEmpty) return;
+
+                  final int number = int.parse(
+                      maskFormatter.unmaskText(phoneTextController.text));
+
+                  ref
+                      .read(accountInfoProvider.notifier)
+                      .updatePhoneNumber(number);
 
                   if (!mounted) return;
                   context.pop();
@@ -93,5 +105,11 @@ class EditPhoneViewState extends ConsumerState<EditPhoneView> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    phoneTextController.dispose();
+    super.dispose();
   }
 }

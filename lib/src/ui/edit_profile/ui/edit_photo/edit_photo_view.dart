@@ -47,34 +47,43 @@ class EditPhotoView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              Container(
-                height: size.height * 0.35,
-                width: size.height * 0.35,
-                decoration: BoxDecoration(
-                  color: GeekColors.kGreyedColor.withOpacity(0.2),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.photo_camera_outlined,
-                      size: 50,
-                    ),
-                    Text(
-                      context.loc.tapToAddAPhoto,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
+              GestureDetector(
+                onTap: () {
+                  // TODO: implement photo feature
+                },
+                child: Container(
+                  height: size.height * 0.35,
+                  width: size.height * 0.35,
+                  decoration: BoxDecoration(
+                    color: GeekColors.kGreyedColor.withOpacity(0.2),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.photo_camera_outlined,
+                        size: 50,
                       ),
-                    ),
-                  ],
+                      Text(
+                        context.loc.tapToAddAPhoto,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const Spacer(flex: 3),
               GeeksLongButton(
                 label: context.loc.update,
                 key: editPhotoLongButtonKey,
+                onPressed: () {
+                  // TODO: implement photo feature
+                  context.pop();
+                },
               ),
               const Spacer(flex: 2)
             ],

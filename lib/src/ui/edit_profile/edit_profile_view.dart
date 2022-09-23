@@ -1,3 +1,4 @@
+import 'package:approachable_geek_challenge/src/common/constants/text_formatter.dart';
 import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:approachable_geek_challenge/src/ui/edit_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,8 @@ class EditProfileView extends ConsumerWidget {
                 ),
                 ProfileInfoTile(
                   label: context.loc.phone,
-                  description: "${account.phoneNumber}",
+                  description: GeeksTextFormatter.phoneNumberTextFormatter
+                      .maskText(account.phoneNumber.toString()),
                   onTap: () {
                     context.pushNamed(EditPhoneView.routeName);
                   },

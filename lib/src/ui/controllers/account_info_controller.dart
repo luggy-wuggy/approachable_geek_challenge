@@ -11,7 +11,9 @@ class AccountInfoController extends StateNotifier<AccountInfoModel> {
           phoneNumber: 2082065039,
         ));
 
-  Future updateFirstName(String firstName) async {
+  Future updateFirstName(String? firstName) async {
+    if (firstName == state.firstName || firstName == null) return;
+
     state = AccountInfoModel(
       firstName: firstName,
       lastName: state.lastName,
@@ -21,7 +23,9 @@ class AccountInfoController extends StateNotifier<AccountInfoModel> {
     );
   }
 
-  Future updateLastName(String lastName) async {
+  Future updateLastName(String? lastName) async {
+    if (lastName == state.lastName || lastName == null) return;
+
     state = AccountInfoModel(
       firstName: state.firstName,
       lastName: lastName,
@@ -31,7 +35,9 @@ class AccountInfoController extends StateNotifier<AccountInfoModel> {
     );
   }
 
-  Future updateEmail(String email) async {
+  Future updateEmail(String? email) async {
+    if (email == state.email || email == null) return;
+
     state = AccountInfoModel(
       firstName: state.firstName,
       lastName: state.lastName,
@@ -41,7 +47,9 @@ class AccountInfoController extends StateNotifier<AccountInfoModel> {
     );
   }
 
-  Future updateBio(String bio) async {
+  Future updateBio(String? bio) async {
+    if (bio == state.bio || bio == null) return;
+
     state = AccountInfoModel(
       firstName: state.firstName,
       lastName: state.lastName,
@@ -51,7 +59,9 @@ class AccountInfoController extends StateNotifier<AccountInfoModel> {
     );
   }
 
-  Future updatePhoneNumber(int phoneNumber) async {
+  Future updatePhoneNumber(int? phoneNumber) async {
+    if (phoneNumber == state.phoneNumber || phoneNumber == null) return;
+
     state = AccountInfoModel(
       firstName: state.firstName,
       lastName: state.lastName,
@@ -68,11 +78,11 @@ final accountInfoProvider =
 });
 
 class AccountInfoModel {
-  late final String? firstName;
-  late final String? lastName;
-  late final String? email;
-  late final String? bio;
-  late final int? phoneNumber;
+  final String? firstName;
+  final String? lastName;
+  final String? email;
+  final String? bio;
+  final int? phoneNumber;
 
   AccountInfoModel({
     this.firstName,

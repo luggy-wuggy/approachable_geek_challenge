@@ -1,5 +1,6 @@
 import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GeeksInputTextField extends StatelessWidget {
   const GeeksInputTextField({
@@ -9,6 +10,7 @@ class GeeksInputTextField extends StatelessWidget {
     this.maxLines,
     this.textEditingController,
     this.textInputType,
+    this.textInputFormatters,
   });
 
   final String? label;
@@ -16,6 +18,7 @@ class GeeksInputTextField extends StatelessWidget {
   final int? maxLines;
   final TextEditingController? textEditingController;
   final TextInputType? textInputType;
+  final List<TextInputFormatter>? textInputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +62,7 @@ class GeeksInputTextField extends StatelessWidget {
       ),
       textInputAction: TextInputAction.done,
       keyboardType: textInputType,
+      inputFormatters: textInputFormatters,
     );
   }
 }
