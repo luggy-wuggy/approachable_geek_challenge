@@ -80,7 +80,7 @@ void main() {
         expect(find.text(mockedEmail), findsOneWidget);
         expect(find.text(mockedBio), findsOneWidget);
         expect(
-            find.text(GeeksTextFormatter.phoneNumberTextFormatter
+            find.text(GeeksTextFormatter.phoneNumberTextFormatter()
                 .maskText(mockedPhoneNumber.toString())),
             findsOneWidget);
       },

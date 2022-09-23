@@ -50,7 +50,7 @@ class EditProfileView extends ConsumerWidget {
                 ),
                 ProfileInfoTile(
                   label: context.loc.phone,
-                  description: GeeksTextFormatter.phoneNumberTextFormatter
+                  description: GeeksTextFormatter.phoneNumberTextFormatter()
                       .maskText(account.phoneNumber.toString()),
                   onTap: () {
                     context.pushNamed(EditPhoneView.routeName);

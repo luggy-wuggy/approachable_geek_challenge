@@ -28,10 +28,13 @@ class EditPhoneViewState extends ConsumerState<EditPhoneView> {
 
   @override
   void initState() {
-    maskFormatter = GeeksTextFormatter.phoneNumberTextFormatter;
+    maskFormatter = GeeksTextFormatter.phoneNumberTextFormatter(
+      initialText: ref.read(accountInfoProvider).phoneNumber.toString(),
+    );
 
-    final String initialText = maskFormatter
-        .maskText(ref.read(accountInfoProvider).phoneNumber.toString());
+    final String initialText = maskFormatter.maskText(
+      ref.read(accountInfoProvider).phoneNumber.toString(),
+    );
 
     phoneTextController = TextEditingController(text: initialText);
     super.initState();
