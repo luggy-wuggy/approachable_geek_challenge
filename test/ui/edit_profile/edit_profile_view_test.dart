@@ -1,5 +1,8 @@
+import 'package:approachable_geek_challenge/src/common/constants/text_formatter.dart';
+import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:approachable_geek_challenge/src/ui/edit_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -19,11 +22,29 @@ void main() {
   final bioProfileInfoTileFinder =
       find.byKey(EditProfileView.bioProfileInfoTile);
 
-  Widget buildTestableWidget(Widget widget) {
-    return MaterialApp(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: widget,
+  const mockedFirstName = "bob";
+  const mockedLastName = "test";
+  const mockedPhoneNumber = 1234567890;
+  const mockedEmail = "bobtest@gmail.com";
+  const mockedBio = "I am a test bio";
+
+  Widget buildTestableWidget({
+    required Widget widget,
+    AccountInfoModel? account,
+  }) {
+    return ProviderScope(
+      overrides: account != null
+          ? [
+              accountInfoProvider.overrideWithProvider(
+                mockAccountInfoProvider(account),
+              )
+            ]
+          : [],
+      child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: widget,
+      ),
     );
   }
 
@@ -31,7 +52,20 @@ void main() {
     testWidgets(
       'Correctly displays $EditProfileView',
       (WidgetTester tester) async {
-        await tester.pumpWidget(buildTestableWidget(const EditProfileView()));
+        const AccountInfoModel mockedAccount = AccountInfoModel(
+          firstName: mockedFirstName,
+          lastName: mockedLastName,
+          phoneNumber: mockedPhoneNumber,
+          email: mockedEmail,
+          bio: mockedBio,
+        );
+
+        await tester.pumpWidget(
+          buildTestableWidget(
+            widget: const EditProfileView(),
+            account: mockedAccount,
+          ),
+        );
 
         expect(editProfileViewFinder, findsOneWidget);
 
@@ -41,7 +75,20 @@ void main() {
         expect(phoneProfileInfoTileFinder, findsOneWidget);
         expect(emailProfileInfoTileFinder, findsOneWidget);
         expect(bioProfileInfoTileFinder, findsOneWidget);
+
+        expect(find.text("$mockedFirstName $mockedLastName"), findsOneWidget);
+        expect(find.text(mockedEmail), findsOneWidget);
+        expect(find.text(mockedBio), findsOneWidget);
+        expect(
+            find.text(GeeksTextFormatter.phoneNumberTextFormatter
+                .maskText(mockedPhoneNumber.toString())),
+            findsOneWidget);
       },
     );
   });
 }
+
+StateNotifierProvider<AccountInfoController, AccountInfoModel>
+    mockAccountInfoProvider(AccountInfoModel mockedAccount) =>
+        StateNotifierProvider<AccountInfoController, AccountInfoModel>(
+            (ref) => AccountInfoController(account: mockedAccount));

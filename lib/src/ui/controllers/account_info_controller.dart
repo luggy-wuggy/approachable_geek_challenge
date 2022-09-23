@@ -1,15 +1,16 @@
 import 'package:riverpod/riverpod.dart';
 
 class AccountInfoController extends StateNotifier<AccountInfoModel> {
-  AccountInfoController()
-      : super(AccountInfoModel(
-          firstName: "Micah",
-          lastName: "Smith",
-          email: "micahsmith@gmail.com",
-          bio:
-              "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City. I make this drive all the time and have plenty",
-          phoneNumber: 2082065039,
-        ));
+  AccountInfoController({
+    AccountInfoModel account = const AccountInfoModel(
+      firstName: "Micah",
+      lastName: "Smith",
+      email: "micahsmith@gmail.com",
+      bio:
+          "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City. I make this drive all the time and have plenty",
+      phoneNumber: 2082065039,
+    ),
+  }) : super(account);
 
   Future updateFirstName(String? firstName) async {
     if (firstName == state.firstName || firstName == null) return;
@@ -84,7 +85,7 @@ class AccountInfoModel {
   final String? bio;
   final int? phoneNumber;
 
-  AccountInfoModel({
+  const AccountInfoModel({
     this.firstName,
     this.lastName,
     this.email,

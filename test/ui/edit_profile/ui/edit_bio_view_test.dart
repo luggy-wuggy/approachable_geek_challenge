@@ -1,5 +1,6 @@
 import 'package:approachable_geek_challenge/src/ui/edit_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -12,10 +13,12 @@ void main() {
   final editBioLongButtonFinder = find.byKey(EditBioView.editBioLongButton);
 
   Widget buildTestableWidget(Widget widget) {
-    return MaterialApp(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: widget,
+    return ProviderScope(
+      child: MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: widget,
+      ),
     );
   }
 
