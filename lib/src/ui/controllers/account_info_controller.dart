@@ -54,7 +54,7 @@ class AccountInfoController extends StateNotifier<AccountInfoModel> {
     state = AccountInfoModel(
       firstName: state.firstName,
       lastName: state.lastName,
-      email: state.bio,
+      email: state.email,
       bio: bio,
       phoneNumber: state.phoneNumber,
     );
