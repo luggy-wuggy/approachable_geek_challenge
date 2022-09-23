@@ -1,17 +1,21 @@
+import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:approachable_geek_challenge/src/ui/edit_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 
 import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
 import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class EditProfileView extends StatelessWidget {
+class EditProfileView extends ConsumerWidget {
   const EditProfileView({super.key});
 
   static const String routeName = 'edit-profile';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AccountInfoModel account = ref.watch(accountInfoProvider);
+
     return Scaffold(
       backgroundColor: GeekColors.kBackgroundColor,
       body: SafeArea(
@@ -38,7 +42,8 @@ class EditProfileView extends StatelessWidget {
                 ),
                 ProfileInfoTile(
                   label: context.loc.name,
-                  description: "Micah Smith",
+                  description:
+                      "${account.firstName ?? ""} ${account.lastName ?? ""}",
                   onTap: () {
                     context.pushNamed(EditNameView.routeName);
                   },
@@ -46,7 +51,7 @@ class EditProfileView extends StatelessWidget {
                 ),
                 ProfileInfoTile(
                   label: context.loc.phone,
-                  description: "(208)206-5039",
+                  description: "${account.phoneNumber}",
                   onTap: () {
                     context.pushNamed(EditPhoneView.routeName);
                   },
@@ -54,7 +59,7 @@ class EditProfileView extends StatelessWidget {
                 ),
                 ProfileInfoTile(
                   label: context.loc.email,
-                  description: "micahsmith@gmail.com",
+                  description: account.email ?? "",
                   onTap: () {
                     context.pushNamed(EditEmailView.routeName);
                   },
@@ -62,8 +67,7 @@ class EditProfileView extends StatelessWidget {
                 ),
                 ProfileInfoTile(
                   label: context.loc.tellUsAboutYourself,
-                  description:
-                      "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City. I make this drive all the time and have plenty",
+                  description: account.bio ?? "",
                   onTap: () {
                     context.pushNamed(EditBioView.routeName);
                   },

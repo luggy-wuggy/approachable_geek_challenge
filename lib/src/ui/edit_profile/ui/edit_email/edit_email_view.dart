@@ -1,4 +1,6 @@
+import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
@@ -6,10 +8,30 @@ import 'package:approachable_geek_challenge/src/common/extensions/app_localizati
 import 'package:approachable_geek_challenge/src/ui/edit_profile/widgets/input_text_field.dart';
 import 'package:approachable_geek_challenge/src/ui/widgets/long_button.dart';
 
-class EditEmailView extends StatelessWidget {
+class EditEmailView extends ConsumerStatefulWidget {
   const EditEmailView({super.key});
 
   static const String routeName = 'edit-email';
+
+  @override
+  EditEmailViewState createState() => EditEmailViewState();
+
+  static const Key editEmailBackArrowKey = Key('edit-email-back-arrow-key');
+  static const Key editEmailTitleKey = Key('edit-email-title-key');
+  static const Key editEmailInputFieldKey = Key('edit-email-input-field-key');
+  static const Key editEmailLongButton = Key('edit-email-long-button-key');
+}
+
+class EditEmailViewState extends ConsumerState<EditEmailView> {
+  late TextEditingController emailTextController;
+
+  @override
+  void initState() {
+    emailTextController = TextEditingController(
+      text: ref.read(accountInfoProvider).email,
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +48,7 @@ class EditEmailView extends StatelessWidget {
                   onTap: () {
                     context.pop();
                   },
-                  key: editEmailBackArrowKey,
+                  key: EditEmailView.editEmailBackArrowKey,
                   child: const Icon(
                     Icons.arrow_back,
                   ),
@@ -42,19 +64,26 @@ class EditEmailView extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
                   ),
-                  key: editEmailTitleKey,
+                  key: EditEmailView.editEmailTitleKey,
                 ),
               ),
               const SizedBox(height: 24),
               GeeksInputTextField(
+                key: EditEmailView.editEmailInputFieldKey,
                 label: context.loc.yourEmailAddress,
-                key: editEmailInputFieldKey,
+                textEditingController: emailTextController,
               ),
               const Spacer(flex: 3),
               GeeksLongButton(
                 label: context.loc.update,
-                onPressed: () {},
-                key: editEmailLongButton,
+                onPressed: () async {
+                  ref
+                      .read(accountInfoProvider.notifier)
+                      .updateEmail(emailTextController.text);
+                  if (!mounted) return;
+                  context.pop();
+                },
+                key: EditEmailView.editEmailLongButton,
               ),
               const Spacer(flex: 2),
             ],
@@ -64,8 +93,9 @@ class EditEmailView extends StatelessWidget {
     );
   }
 
-  static const Key editEmailBackArrowKey = Key('edit-email-back-arrow-key');
-  static const Key editEmailTitleKey = Key('edit-email-title-key');
-  static const Key editEmailInputFieldKey = Key('edit-email-input-field-key');
-  static const Key editEmailLongButton = Key('edit-email-long-button-key');
+  @override
+  void dispose() {
+    emailTextController.dispose();
+    super.dispose();
+  }
 }

@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
-import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
 import 'package:flutter/material.dart';
 
 class GeeksInputTextField extends StatelessWidget {
@@ -10,15 +7,20 @@ class GeeksInputTextField extends StatelessWidget {
     this.label,
     this.hint,
     this.maxLines,
+    this.textEditingController,
+    this.textInputType,
   });
 
   final String? label;
   final String? hint;
   final int? maxLines;
+  final TextEditingController? textEditingController;
+  final TextInputType? textInputType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: textEditingController,
       style: const TextStyle(
         color: Colors.black,
         fontWeight: FontWeight.w600,
@@ -56,6 +58,7 @@ class GeeksInputTextField extends StatelessWidget {
         ),
       ),
       textInputAction: TextInputAction.done,
+      keyboardType: textInputType,
     );
   }
 }
