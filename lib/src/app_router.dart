@@ -41,6 +41,11 @@ class GeeksRouter {
             path: EditBioView.routeName,
             builder: (context, state) => const EditBioView(),
           ),
+          GoRoute(
+            name: EditPhotoView.routeName,
+            path: EditPhotoView.routeName,
+            builder: (context, state) => const EditPhotoView(),
+          ),
         ],
       ),
     ],

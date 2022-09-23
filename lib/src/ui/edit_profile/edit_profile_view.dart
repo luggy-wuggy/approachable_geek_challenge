@@ -30,7 +30,12 @@ class EditProfileView extends StatelessWidget {
                   key: editProfileTitleKey,
                 ),
                 const SizedBox(height: 12),
-                const ProfilePhotoCircle(key: profilePhotoCircleKey),
+                ProfilePhotoCircle(
+                  key: profilePhotoCircleKey,
+                  onTap: () {
+                    context.pushNamed(EditPhotoView.routeName);
+                  },
+                ),
                 ProfileInfoTile(
                   label: context.loc.name,
                   description: "Micah Smith",

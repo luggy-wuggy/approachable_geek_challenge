@@ -58,5 +58,13 @@
     "bioTextFieldDescription": "Write a little bit about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.",
     "@bioTextFieldDescription": {
       "description": "The desciption hint text for bio textfield"
+    },
+    "uploadAPhotoOfYourself": "Upload a photo of yourself:",
+    "@uploadAPhotoOfYourself": {
+      "description": "The title for EditPhotoView"
+    },
+    "tapToAddAPhoto": "Tap to add a photo",
+    "@tapToAddAPhoto": {
+      "description": "The text for 'Tap to add a photo'"
     }
 }

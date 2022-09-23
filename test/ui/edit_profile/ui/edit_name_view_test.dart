@@ -22,7 +22,7 @@ void main() {
     );
   }
 
-  group("EditBioView", () {
+  group("EditNameView", () {
     testWidgets(
       'Correctly displays $EditNameView',
       (WidgetTester tester) async {
