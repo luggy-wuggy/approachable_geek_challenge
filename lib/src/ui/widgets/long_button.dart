@@ -1,3 +1,4 @@
+import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
 import 'package:flutter/material.dart';
 
 class GeeksLongButton extends StatelessWidget {
@@ -19,9 +20,9 @@ class GeeksLongButton extends StatelessWidget {
         backgroundColor: Colors.black,
         fixedSize: const Size(340, 60),
       ),
-      child: const Text(
-        'Update',
-        style: TextStyle(
+      child: Text(
+        context.loc.update,
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 14,
           fontWeight: FontWeight.w700,

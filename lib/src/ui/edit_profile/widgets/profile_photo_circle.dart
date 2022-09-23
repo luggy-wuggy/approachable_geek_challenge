@@ -28,8 +28,6 @@ class ProfilePhotoCircle extends StatelessWidget {
           right: 0,
           top: 10,
           child: Container(
-            width: size.width * 0.08,
-            height: size.width * 0.08,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.white,

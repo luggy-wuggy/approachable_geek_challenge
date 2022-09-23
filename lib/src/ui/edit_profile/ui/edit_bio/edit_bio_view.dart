@@ -25,6 +25,7 @@ class EditBioView extends StatelessWidget {
                   onTap: () {
                     context.pop();
                   },
+                  key: editBioBackArrowKey,
                   child: const Icon(
                     Icons.arrow_back,
                   ),
@@ -40,17 +41,20 @@ class EditBioView extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
                   ),
+                  key: editBioTitleKey,
                 ),
               ),
               const SizedBox(height: 24),
               GeeksInputTextField(
                 hint: context.loc.bioTextFieldDescription,
                 maxLines: 5,
+                key: editBioInputFieldKey,
               ),
               const Spacer(flex: 3),
               GeeksLongButton(
                 label: context.loc.update,
                 onPressed: () {},
+                key: editBioLongButton,
               ),
               const Spacer(flex: 2),
             ],
@@ -59,4 +63,9 @@ class EditBioView extends StatelessWidget {
       ),
     );
   }
+
+  static const Key editBioBackArrowKey = Key('edit-bio-back-arrow-key');
+  static const Key editBioTitleKey = Key('edit-bio-title-key');
+  static const Key editBioInputFieldKey = Key('edit-bio-input-field-key');
+  static const Key editBioLongButton = Key('edit-bio-long-button-key');
 }

@@ -26,6 +26,7 @@ class EditNameView extends StatelessWidget {
                   onTap: () {
                     context.pop();
                   },
+                  key: editNameBackArrowKey,
                   child: const Icon(
                     Icons.arrow_back,
                   ),
@@ -41,22 +42,32 @@ class EditNameView extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
                   ),
+                  key: editNameTitleKey,
                 ),
               ),
               const SizedBox(height: 24),
               Row(
                 children: [
                   Expanded(
-                      child: GeeksInputTextField(label: context.loc.firstName)),
+                    child: GeeksInputTextField(
+                      label: context.loc.firstName,
+                      key: editFirstNameInputFieldKey,
+                    ),
+                  ),
                   const SizedBox(width: 12),
                   Expanded(
-                      child: GeeksInputTextField(label: context.loc.lastName))
+                    child: GeeksInputTextField(
+                      label: context.loc.lastName,
+                      key: editLastNameInputFieldKey,
+                    ),
+                  )
                 ],
               ),
               const Spacer(flex: 3),
               GeeksLongButton(
                 label: context.loc.update,
                 onPressed: () {},
+                key: editNameLongButton,
               ),
               const Spacer(flex: 2),
             ],
@@ -65,4 +76,12 @@ class EditNameView extends StatelessWidget {
       ),
     );
   }
+
+  static const Key editNameBackArrowKey = Key('edit-name-back-arrow-key');
+  static const Key editNameTitleKey = Key('edit-name-title-key');
+  static const Key editFirstNameInputFieldKey =
+      Key('edit-first-name-input-field-key');
+  static const Key editLastNameInputFieldKey =
+      Key('edit-last-name-input-field-key');
+  static const Key editNameLongButton = Key('edit-name-long-button-key');
 }

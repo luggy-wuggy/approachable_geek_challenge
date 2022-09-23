@@ -17,7 +17,7 @@ class EditProfileView extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(24),
-          child: Center(
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 Text(
@@ -27,15 +27,17 @@ class EditProfileView extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
                   ),
+                  key: editProfileTitleKey,
                 ),
                 const SizedBox(height: 12),
-                const ProfilePhotoCircle(),
+                const ProfilePhotoCircle(key: profilePhotoCircleKey),
                 ProfileInfoTile(
                   label: context.loc.name,
                   description: "Micah Smith",
                   onTap: () {
                     context.pushNamed(EditNameView.routeName);
                   },
+                  key: nameProfileInfoTile,
                 ),
                 ProfileInfoTile(
                   label: context.loc.phone,
@@ -43,6 +45,7 @@ class EditProfileView extends StatelessWidget {
                   onTap: () {
                     context.pushNamed(EditPhoneView.routeName);
                   },
+                  key: phoneProfileInfoTile,
                 ),
                 ProfileInfoTile(
                   label: context.loc.email,
@@ -50,6 +53,7 @@ class EditProfileView extends StatelessWidget {
                   onTap: () {
                     context.pushNamed(EditEmailView.routeName);
                   },
+                  key: emailProfileInfoTile,
                 ),
                 ProfileInfoTile(
                   label: context.loc.tellUsAboutYourself,
@@ -58,6 +62,7 @@ class EditProfileView extends StatelessWidget {
                   onTap: () {
                     context.pushNamed(EditBioView.routeName);
                   },
+                  key: bioProfileInfoTile,
                 )
               ],
             ),
@@ -66,4 +71,11 @@ class EditProfileView extends StatelessWidget {
       ),
     );
   }
+
+  static const Key editProfileTitleKey = Key('edit-profile-title-key');
+  static const Key profilePhotoCircleKey = Key('edit-profile-circle-key');
+  static const Key nameProfileInfoTile = Key('name-profile-info-tile-key');
+  static const Key phoneProfileInfoTile = Key('phone-profile-info-tile-key');
+  static const Key emailProfileInfoTile = Key('email-profile-info-tile-key');
+  static const Key bioProfileInfoTile = Key('bio-profile-info-tile-key');
 }

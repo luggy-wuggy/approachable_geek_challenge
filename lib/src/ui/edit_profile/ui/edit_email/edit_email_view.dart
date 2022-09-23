@@ -26,6 +26,7 @@ class EditEmailView extends StatelessWidget {
                   onTap: () {
                     context.pop();
                   },
+                  key: editEmailBackArrowKey,
                   child: const Icon(
                     Icons.arrow_back,
                   ),
@@ -41,14 +42,19 @@ class EditEmailView extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.w600,
                   ),
+                  key: editEmailTitleKey,
                 ),
               ),
               const SizedBox(height: 24),
-              GeeksInputTextField(label: context.loc.yourEmailAddress),
+              GeeksInputTextField(
+                label: context.loc.yourEmailAddress,
+                key: editEmailInputFieldKey,
+              ),
               const Spacer(flex: 3),
               GeeksLongButton(
                 label: context.loc.update,
                 onPressed: () {},
+                key: editEmailLongButton,
               ),
               const Spacer(flex: 2),
             ],
@@ -57,4 +63,9 @@ class EditEmailView extends StatelessWidget {
       ),
     );
   }
+
+  static const Key editEmailBackArrowKey = Key('edit-email-back-arrow-key');
+  static const Key editEmailTitleKey = Key('edit-email-title-key');
+  static const Key editEmailInputFieldKey = Key('edit-email-input-field-key');
+  static const Key editEmailLongButton = Key('edit-email-long-button-key');
 }
