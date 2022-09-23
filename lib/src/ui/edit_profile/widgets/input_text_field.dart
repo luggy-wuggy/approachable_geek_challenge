@@ -1,6 +1,7 @@
-import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 
 class GeeksInputTextField extends StatelessWidget {
   const GeeksInputTextField({

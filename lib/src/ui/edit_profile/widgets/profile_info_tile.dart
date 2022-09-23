@@ -1,5 +1,6 @@
-import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
 
 class ProfileInfoTile extends StatelessWidget {
   const ProfileInfoTile({

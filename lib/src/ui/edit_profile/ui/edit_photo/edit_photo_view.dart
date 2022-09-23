@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:approachable_geek_challenge/src/ui/widgets/long_button.dart';
-import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
-import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
+import 'package:approachable_geek_challenge/src/common/common.dart';
 
 class EditPhotoView extends StatelessWidget {
   const EditPhotoView({super.key});

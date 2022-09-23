@@ -1,14 +1,12 @@
-import 'package:approachable_geek_challenge/src/common/constants/text_formatter.dart';
-import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import 'package:approachable_geek_challenge/src/common/constants/colors.dart';
-import 'package:approachable_geek_challenge/src/common/extensions/app_localization_context.dart';
+import 'package:approachable_geek_challenge/src/common/common.dart';
+import 'package:approachable_geek_challenge/src/ui/controllers/account_info_controller.dart';
 import 'package:approachable_geek_challenge/src/ui/edit_profile/widgets/input_text_field.dart';
 import 'package:approachable_geek_challenge/src/ui/widgets/long_button.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class EditPhoneView extends ConsumerStatefulWidget {
   const EditPhoneView({super.key});

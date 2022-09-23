@@ -26,13 +26,14 @@ class ProfilePhotoCircle extends StatelessWidget {
             child: Icon(
               Icons.person,
               size: 80,
-              color: Colors.grey[400],
+              color: GeekColors.kGreyedColor.withOpacity(0.5),
             ),
           ),
           Positioned(
             right: 0,
             top: 10,
             child: Container(
+              padding: const EdgeInsets.all(4),
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
@@ -40,6 +41,7 @@ class ProfilePhotoCircle extends StatelessWidget {
               child: const Icon(
                 Icons.edit,
                 color: GeekColors.kPrimaryAccentColor,
+                size: 20,
               ),
             ),
           )
