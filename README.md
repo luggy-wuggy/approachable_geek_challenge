@@ -28,11 +28,43 @@ Once Flutter is setup, you can use the latest `stable` channel:
  Once on `stable` you're ready to run the app on your local device or simulator:
  * `flutter run -d ios`
  * `flutter run -d android`
- 
+  
  ## Packages used
 - [`riverpod` and `flutter_riverpod`](https://riverpod.dev/) : Used for the sake of state management, simply used to handle state for the account info, specifically used the StateNotifierProvider for immutability
 - [`go_router`](https://pub.dev/packages/go_router): My go-to app routing navigation, since it includes Navigator 2.0 features
 - [`mask_text_input_formatter`](https://pub.dev/packages/mask_text_input_formatter): Used for the text formatting of the phone number ex. `### ###-####`
+
+## Architecture/File Directory System
+I am using the UI-Domain-Data app architecture, [recommended by Android's team](https://developer.android.com/topic/architecture#recommended-app-arch)
+
+<img width="521" alt="Screen Shot 2022-09-23 at 5 34 49 PM" src="https://user-images.githubusercontent.com/54586837/192072401-5ce5503a-7fb6-40c7-9bc5-0c9dc1e152b9.png">
+
+But since, this app is quite simple and does not require any data repository/fetching or intense business logic, I discarded the `domain` and `data` layer in the project. The `ui` folder is broken down by main views  (ex: [`edit_profile_view.dart`](https://github.com/luggy-wuggy/approachable_geek_challenge/blob/main/lib/src/ui/edit_profile/edit_profile_view.dart)) and if need be, has subfolders `ui` that container subviews (ex: [`edit_name_view.dart`](https://github.com/luggy-wuggy/approachable_geek_challenge/blob/main/lib/src/ui/edit_profile/ui/edit_name/edit_name_view.dart)).
+
+Typically the `ui` folder is broken down like this:
+
+```
+ui
+│
+└───controller ## global state controllers accessed throughout the app (user state)
+│   │   controllers.dart
+│   │   ...
+│   
+└───widgets ## reusuable global widgets accessed throughout the app (buttons, modal sheets)
+│   │   buttons.dart
+│   │   ...
+│
+└───edit_profile ## ui folder is broken down by main view/screens
+│   │   edit_profile_view.dart ## The main file (aka file that contains the scaffold)
+│   │
+│   └───widgets ## locally scopped widgets used only in edit_profile
+│   │   │   local_widgets.dart
+│   │   │   ...
+│   │   
+│   └───controller ## local state controllers accessed only in edit_profile (button toggle/animations)
+│   │   │   local_controllers.dart
+│   │   │   ...
+```
 
 ## In addition:
 - Included simple widget testing of all the pages and an example of mocking out providers for riverpod state holders [(here)](https://github.com/luggy-wuggy/approachable_geek_challenge/blob/main/test/ui/edit_profile/edit_profile_view_test.dart)
