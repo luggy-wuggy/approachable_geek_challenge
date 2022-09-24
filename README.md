@@ -37,4 +37,4 @@ Once Flutter is setup, you can use the latest `stable` channel:
 ## In addition:
 - Included simple widget testing of all the pages and an example of mocking out providers for riverpod state holders [(here)](https://github.com/luggy-wuggy/approachable_geek_challenge/blob/main/test/ui/edit_profile/edit_profile_view_test.dart)
      - To run test: `flutter test`
-- Included app localization (a standard I use for applications I work on)
+- Included app localization just in case we want Spanish :))
